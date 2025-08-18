@@ -18,7 +18,9 @@ let newQuoteBtn = document.getElementById("newQuote");
 // Form elements
 let newQuoteText = document.getElementById("newQuoteText");
 let newQuoteCategory = document.getElementById("newQuoteCategory");
-
+if (newQuoteBtn == true) {
+  newQuoteBtn.addEventListener("click", "newQuoteText");
+}
 // Function to show a random quote
 function showRandomQuote() {
   let randomIndex = Math.floor(Math.random() * quotes.length);
