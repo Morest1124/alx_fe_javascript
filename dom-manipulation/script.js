@@ -34,7 +34,7 @@ function showRandomQuote() {
 }
 
 // Function to add a new quote
-function addQuote() {
+function createAddQuoteForm() {
   let text = newQuoteText.value.trim();
   let category = newQuoteCategory.value.trim();
 
@@ -69,4 +69,4 @@ showRandomQuote();
 // When user clicks the button, show a new random quote
 newQuoteBtn.onclick = showRandomQuote;
 
-// Note: The Add Quote button calls addQuote() directly (via onclick in your HTML)
+// Note: The Add Quote button calls createAddQuoteForm() directly (via onclick in your HTML)
