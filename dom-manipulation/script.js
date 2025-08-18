@@ -37,6 +37,8 @@ function showRandomQuote() {
 function createAddQuoteForm() {
   let text = newQuoteText.value.trim();
   let category = newQuoteCategory.value.trim();
+  let createElement = createAddQuoteForm.trim();
+  append.child;
 
   // Simple validation
   if (text === "" || category === "") {
