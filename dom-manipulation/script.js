@@ -10,9 +10,6 @@ let quotes = [
     category: "Humor",
   },
 ];
-//store in local storage
-localStorage.setItem("quotes", quotes);
-localStorage.getItem("quotes", quotes);
 
 // References to HTML elements
 let quoteDisplay = document.getElementById("quoteDisplay");
@@ -21,10 +18,11 @@ let newQuoteBtn = document.getElementById("newQuote");
 // Form elements
 let newQuoteText = document.getElementById("newQuoteText");
 let newQuoteCategory = document.getElementById("newQuoteCategory");
-
+if (newQuoteBtn == true) {
+  newQuoteBtn.addEventListener("click", "newQuoteText");
+}
 // Function to show a random quote
 function showRandomQuote() {
-  localStorage.getItem("quotes");
   let randomIndex = Math.floor(Math.random() * quotes.length);
   let quote = quotes[randomIndex];
 
@@ -37,22 +35,31 @@ function showRandomQuote() {
   `;
 }
 
-// Function to add a new quote
-function addQuote() {
+function createAddQuoteForm() {
   let text = newQuoteText.value.trim();
   let category = newQuoteCategory.value.trim();
 
   // Simple validation
   if (text === "" || category === "") {
     alert("Please enter both a quote and a category.");
-    localStorage.setItem("quotes", quotes);
     return;
   }
 
   // Add to our quotes array
   quotes.push({ text: text, category: category });
-  let quoteStore = JSON.stringify(quotes);
-  localStorage.setItem("quoteStore", quotesStore);
+
+  // Create a new blockquote element,
+  let blockquote = document.createElement("blockquote");
+  let p = document.createElement("p");
+  p.textContent = text;
+  let footer = document.createElement("footer");
+  footer.textContent = `Category: ${category}`;
+
+  blockquote.appendChild(p);
+  blockquote.appendChild(footer);
+
+  // Append the blockquote to the quoteDisplay element
+  quoteDisplay.appendChild(blockquote);
 
   // Clear the input fields
   newQuoteText.value = "";
@@ -60,15 +67,15 @@ function addQuote() {
 
   // Feedback
   alert("New quote added!");
+}
 
-  // Optional: show the new quote immediately
-  quoteDisplay.innerHTML = `
+// Optional: show the new quote immediately
+quoteDisplay.innerHTML = `
     <blockquote>
       <p>${text}</p>
       <footer>Category: ${category}</footer>
     </blockquote>
   `;
-}
 
 // When the page first loads, show a quote
 showRandomQuote();
