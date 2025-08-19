@@ -48,6 +48,7 @@ function addQuote() {
   }
   // Add to our quotes array
   quotes.push({ text: text, category: category });
+  quotes.appendChild(addQuote);
 
   // Clear the input fields
   newQuoteText.value = "";
@@ -65,6 +66,31 @@ function addQuote() {
     </blockquote>
   `;
 }
+/*
+//importing file
+const upload = document.getElementById("importFile");
+addFiles.addEventListener("click");
+if (addFiles == "") {
+  alert("You did not upload anything!");
+} else {
+  localStorage.setItem("importFile", importFile);
+
+  alert("You have successfully uploaded to local storage");
+}
+//add file func
+function addFiles() {
+  let importFiles = getElementById("importFile");
+  let addFile = localStorage.setItem("File", addFile);
+}
+
+//Storing quotes to localstorage
+localStorage.setItem("Quote", quotes);
+localStorage.setItem("addQuote", addQuote);
+localStorage.getItem("Quote", quotes);
+localStorage.getItem("addQuote", quotes);*/
+
+const jsonstring = JSON.stringify(quotes);
+console.log(jsonstring);
 
 // When the page first loads, show a quote
 showRandomQuote();
