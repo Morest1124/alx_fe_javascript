@@ -36,8 +36,7 @@ function showRandomQuote() {
   `;
 }
 
-// Function to add a new quote
-function addQuote() {
+function createAddQuoteForm() {
   let text = newQuoteText.value.trim();
   let category = newQuoteCategory.value.trim();
 
@@ -50,12 +49,27 @@ function addQuote() {
   // Add to our quotes array
   quotes.push({ text: text, category: category });
 
+  // Create a new blockquote element,
+  let blockquote = document.createElement("blockquote");
+  let p = document.createElement("p");
+  p.textContent = text;
+  let footer = document.createElement("footer");
+  footer.textContent = `Category: ${category}`;
+
+  blockquote.appendChild(p);
+  blockquote.appendChild(footer);
+
+  // Append the blockquote to the quoteDisplay element
+  quoteDisplay.appendChild(blockquote);
+
   // Clear the input fields
   newQuoteText.value = "";
   newQuoteCategory.value = "";
 
   // Feedback
   alert("New quote added!");
+}
+
 
   // Optional: show the new quote immediately
   quoteDisplay.innerHTML = `
