@@ -48,7 +48,6 @@ function addQuote() {
   }
   // Add to our quotes array
   quotes.push({ text: text, category: category });
-  quotes.appendChild(addQuote);
 
   // Clear the input fields
   newQuoteText.value = "";
@@ -99,3 +98,4 @@ showRandomQuote();
 newQuoteBtn.onclick = showRandomQuote;
 
 // Note: The Add Quote button calls addQuote() directly (via onclick in your HTML)
+
